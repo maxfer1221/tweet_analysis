@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>Link List</title>
+
+        <link rel="icon" href="../images/icon.ico">
+
         <script type="text/javascript" src="../js/dates.js"></script>
     </head>
     <body>
@@ -12,6 +15,9 @@
 
     <footer>
         <script type="text/javascript">
+            const queryString = window.location.search;
+            console.log(queryString);
+
             document.getElementById("header").innerText += ` ${localStorage.getItem('date')}`;
             let articles = JSON.parse(localStorage.myArray);
             for(var i = 0; i < articles.length; i++){

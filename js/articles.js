@@ -80,8 +80,10 @@ function sortArticlesByDate(){
 
 function sortArticlesByMentions(){
     for(var i = 0; i < articlesByDate.length; i++){
-        articlesByDate[i].sort((a, b) => a.mentions - b.mentions);
-        articlesByDate[i].reverse();
+        articlesByDate[i].sort((a, b) => {
+            if( b.mentions === a.mentions ) return b.likes - a.likes;
+            return b.mentions - a.mentions;
+        });
     }
 }
 
@@ -89,6 +91,6 @@ function displayList(id, date){
     if( !window.localStorage) alert("Sorry, you're using an unsupported browser");
     else {
         localStorage.myArray = JSON.stringify(articlesByDate[id]);
-        localStorage.setItem('date', Months[date.getMonth()] + " " + getDayAsStr(date.getDate()));
+        localStorage.setItem('date', Months_3[date.slice(4, 7)] + " " + getDayAsStr(date.slice(8,10)));
     }
 }

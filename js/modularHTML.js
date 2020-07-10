@@ -12,70 +12,73 @@ let mid_left_bp = document.getElementById("timeline_mid_left_bp");
 $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() > $(document).height() - 400) {
        extendFile();
-       extendFile();
    }
 });
 
 function extendFile() {
     if(datesLeft){
         // let tempArt = fetch_HEAD(global_links_array[universal_date_index], 0);
+        try{
+            let finished_top = createTop();
 
-        let finished_top = createTop();
+            const cached_date = addDays(m25, universal_date_index);
+            const cached_date_index = universal_date_index;
 
-        let tempDate = addDays(m25, universal_date_index);
+            finished_top.getElementsByClassName("top-node-date")[0].innerText = Months[cached_date.getMonth()] + " " + getDayAsStr(cached_date.getDate());
+            if(articlesByDate[universal_date_index].length > 4){
+                timeline.appendChild(finished_top);
+                for(let i = 0; i < 2; i++){
+                    if(turn_right){
+                        tempCard = createRightMid();
+                    } else{
+                        tempCard = createLeftMid();
+                    }
+                    turn_right = !turn_right;
 
-        finished_top.getElementsByClassName("top-node-date")[0].innerText = Months[tempDate.getMonth()] + " " + getDayAsStr(tempDate.getDate());
-
-        timeline.appendChild(finished_top);
-        if(articlesByDate[universal_date_index].length > 4){
-            for(let i = 0; i < 2; i++){
+                    tempCard.getElementsByClassName("article-title")[0].innerText = articlesByDate[universal_date_index][i].link;
+                    tempCard.getElementsByClassName("article-title")[0].href = articlesByDate[universal_date_index][i].link;
+                    tempCard.getElementsByClassName("source-url")[0].innerText = `Appearances on #BlackLivesMatter: ${articlesByDate[universal_date_index][i].mentions}\nLikes on source Tweet: ${articlesByDate[universal_date_index][i].likes}`;
+                    tempCard.getElementsByClassName("introductory-snippet")[0].innerText = '';
+                    timeline.appendChild(tempCard);
+                }
                 if(turn_right){
                     tempCard = createRightMid();
                 } else{
                     tempCard = createLeftMid();
                 }
-                turn_right = !turn_right;
 
-                tempCard.getElementsByClassName("article-title")[0].innerText = articlesByDate[universal_date_index][i].link;
-                tempCard.getElementsByClassName("article-title")[0].href = articlesByDate[universal_date_index][i].link;
-                tempCard.getElementsByClassName("source-url")[0].innerText = `Appearances on #BlackLivesMatter: ${articlesByDate[universal_date_index][i].mentions}\nLikes on source Tweet: ${articlesByDate[universal_date_index][i].likes}`;
-                tempCard.getElementsByClassName("introductory-snippet")[0].innerText = '';
+                turn_right = !turn_right;
+                tempCard.getElementsByClassName("article-title")[0].innerText = `View ${articlesByDate[universal_date_index].length - 2} more links shared on ${Months[cached_date.getMonth()]} ${getDayAsStr(cached_date.getDate())}`;
+                tempCard.getElementsByClassName("article-title")[0].setAttribute('onclick', `javascript:displayList(${cached_date_index}, '${cached_date}')`);
+                tempCard.getElementsByClassName("article-title")[0].href = 'extra_html/link_list.html';
+                tempCard.getElementsByClassName("introductory-snippet")[0].innerText = `${articlesByDate[universal_date_index][2].link}\n${articlesByDate[universal_date_index][3].link}\n...`;
+                tempCard.getElementsByClassName("source-url")[0].innerText = '';
                 timeline.appendChild(tempCard);
-            }
-            if(turn_right){
-                tempCard = createRightMid();
+
             } else{
-                tempCard = createLeftMid();
-            }
-            turn_right = !turn_right;
-            tempCard.getElementsByClassName("article-title")[0].innerText = `View ${articlesByDate[universal_date_index].length - 2} more links shared on ${Months[tempDate.getMonth()]} ${getDayAsStr(tempDate.getDate())}`;
-            tempCard.getElementsByClassName("article-title")[0].onclick = function () { displayList(universal_date_index, tempDate) };
-            tempCard.getElementsByClassName("article-title")[0].href = 'extra_html/link_list.html';
-            tempCard.getElementsByClassName("introductory-snippet")[0].innerText = `${articlesByDate[universal_date_index][2].link}\n${articlesByDate[universal_date_index][3].link}\n...`;
-            tempCard.getElementsByClassName("source-url")[0].innerText = '';
-            timeline.appendChild(tempCard);
+                timeline.appendChild(finished_top);
+                for(let i = 0; i < articlesByDate[universal_date_index].length; i++){
+                    if(turn_right){
+                        tempCard = createRightMid();
+                    } else{
+                        tempCard = createLeftMid();
+                    }
+                    turn_right = !turn_right;
 
-        } else{
-            for(let i = 0; i < articlesByDate[universal_date_index].length; i++){
-                if(turn_right){
-                    tempCard = createRightMid();
-                } else{
-                    tempCard = createLeftMid();
+                    tempCard.getElementsByClassName("article-title")[0].innerText = articlesByDate[universal_date_index][i].link;
+                    tempCard.getElementsByClassName("article-title")[0].href = articlesByDate[universal_date_index][i].link;
+                    tempCard.getElementsByClassName("source-url")[0].innerText = `Appearances on #BlackLivesMatter: ${articlesByDate[universal_date_index][i].mentions}\nLikes on source Tweet: ${articlesByDate[universal_date_index][i].likes}`;
+                    tempCard.getElementsByClassName("introductory-snippet")[0].innerText = '';
+                    timeline.appendChild(tempCard);
                 }
-                turn_right = !turn_right;
-
-                tempCard.getElementsByClassName("article-title")[0].innerText = articlesByDate[universal_date_index][i].link;
-                tempCard.getElementsByClassName("article-title")[0].href = articlesByDate[universal_date_index][i].link;
-                tempCard.getElementsByClassName("source-url")[0].innerText = `Appearances on #BlackLivesMatter: ${articlesByDate[universal_date_index][i].mentions}\nLikes on source Tweet: ${articlesByDate[universal_date_index][i].likes}`;
-                tempCard.getElementsByClassName("introductory-snippet")[0].innerText = '';
-                timeline.appendChild(tempCard);
             }
+            universal_date_index++;
+            if(universal_date_index >= articlesByDate.length){
+                datesLeft = false;
+            }
+        } catch (e) {
+            console.log(e);
         }
-
-    }
-    universal_date_index++;
-    if(universal_date_index >= articlesByDate.length){
-        datesLeft = false;
     }
 }
 

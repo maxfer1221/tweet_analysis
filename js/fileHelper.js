@@ -18,6 +18,8 @@ async function getData(url){
     console.log(global_line_length);
     initArrays();
     createArticleObjects();
+    sortArticlesByDate();
+    sortArticlesByMentions();
 }
 
 function listElementCounter(list){

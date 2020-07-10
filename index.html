@@ -24,6 +24,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Smooth Scrolling jQuery script -->
     <script>
@@ -53,14 +54,14 @@
     });
     </script>
 
+    <!-- Small JS utility file for getting today's date -->
+    <script type="text/javascript" src="js/dates.js"></script>
+
     <!-- Articles JS File -->
     <script type="text/javascript" src="js/articles.js"></script>
 
     <!-- CSV File Scripting -->
     <script type="text/javascript" src="js/fileHelper.js"></script>
-
-    <!-- Small JS utility file for getting today's date -->
-    <script type="text/javascript" src="js/dates.js"></script>
 
     <!-- Personalized Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
@@ -80,7 +81,7 @@
         <div class="col-sm-6  timeline-item">
             <div class="row">
                 <div class="col-sm-11">
-                    <div class="timeline-panel credits  anim animate fadeInLeft">
+                    <div class="timeline-panel credits">
                         <ul class="timeline-panel-ul">
                             <div>
                                 <li><a href="#" onclick="" class="importo article-title">Article Link</a></li>
@@ -101,7 +102,7 @@
         <div class="offset-sm-6 col-sm-6  timeline-item">
             <div class="row">
                 <div class="offset-sm-1 col-sm-11">
-                    <div class="timeline-panel debits  anim animate  fadeInRight">
+                    <div class="timeline-panel debits">
                         <ul class="timeline-panel-ul">
                             <div>
                                 <li><a href="#" onclick="" class="importo article-title">Article Link</a></li>
@@ -117,70 +118,154 @@
         </div>
     </div>
     <!-- Cover Page -->
+    <section id="intro">
+        <section id="title">
 
-    <section id="title">
+          <div class="title-container container-fluid">
 
-      <div class="title-container container-fluid">
+            <!-- Nav Bar -->
 
-        <!-- Nav Bar -->
+            <nav class="navbar navbar-expand-lg navbar-dark">
+              <p class="navbar-brand-name" href="#">
+                  facts, figures & forwards
+              </p>
+              <img class="navbar-brand" src="SVG/logo.svg" alt="logo">
 
-        <nav class="navbar navbar-expand-lg navbar-dark">
-          <p class="navbar-brand-name" href="#">
-              facts, figures & forwards
-          </p>
-          <img class="navbar-brand" src="SVG/logo.svg" alt="logo">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item"> <a class="nav-link" href="#timeline-top">timeline</a> </li>
+                  <li class="nav-item"> <a class="nav-link" href="#about-section">about</a> </li>
+                  <li class="nav-item"> <a class="nav-link" href="https://github.com/YandrewZ/tweet_analysis">github repository</a> </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      creators
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="https://github.com/YandrewZ">Yiheng (Andrew) Zhu</a>
+                      <a class="dropdown-item" href="https://maxfer1221.github.io/cv/">Maximo Fernandez</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </nav>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item"> <a class="nav-link" href="#timeline">timeline</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="#pricing">about</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="https://github.com/YandrewZ/tweet_analysis">github repository</a> </li>
-            </ul>
+
+            <!-- Title -->
+            <section class="header-table">
+                <div class="row">
+                    <div class="title-image-col col-lg-6">
+                      <img class="title-image" src="SVG/logo.svg" alt="logo">
+                    </div>
+                    <div class="header-image-col col-lg-6">
+                        <h1>trending (hash)tags</h1>
+                        <p>a comprehensive timeline of shared twitter links</p>
+                    </div>
+                </div>
+            </section>
+
+
           </div>
-        </nav>
 
-
-        <!-- Title -->
-        <section class="header-table">
-            <div class="row">
-                <div class="title-image-col col-lg-6">
-                  <img class="title-image" src="SVG/logo.svg" alt="logo">
-                </div>
-                <div class="header-image-col col-lg-6">
-                    <h1>trending (hash)tags</h1>
-                    <p>a comprehensive timeline of shared twitter links</p>
-                </div>
-            </div>
         </section>
+        <section id="about-section" class="about">
+            <div class="about-project">
+                <h2>about the project</h2>
+                <p class="main-about">
+                facts, figures, & forwards is a python-based web-scraping project intended to store useful and trending links shared on twitter, presenting them in a clear and meaningful manner<br />
+                </p>
+                <p>
+                twitter’s extensive outreach as an information distribution platform has attracted over 330 million users. through incessant activity world-wide, the ever-growing social media/news conglomerate is home to <strong>trillions</strong> of tweets, providing opinions, information, and links on pressing global matters.  we have set out to identify these tweets and extract links in an attempt to enhance the publicly available data on relevant issues. our algorithms focus on the top tweets for specific hashtags to ensure higher quality results. <br />
+                </p>
+                <p>
+                our data is presented in a timeline format, separating links by their parent tweet’s posting date. this format concentrates on the development of issues in their longevity. for each individual date, the links are sorted by appearances on their respective hashtags, acting as a measure of activity and agreement on the link’s veritability. mentions are valued over likes in our algorithms as they require active participation in the spread of the link.
+                </p>
+                <p>
+                facts, figures & forwards currently only supports the #BlackLivesMatter hashtag as it is an imperative focal point in today’s society, however, the algorithms and code utilized to collect, parse, and present the data can be applied to any available hashtag. this system allows a similar stream of information to be replicated with any future social, cultural, or political issue, as well as any other imaginable topic with a used, contemporary twitter tag.
+                </p>
+                <p>most links are presented without deliberate tampering as to ensure impartial data distribution<br /></p>
+                <small>*bit.ly, ow.ly, youtube, and similar link types have been double-checked by the creators to keep the data relevant at the discretion of the reviewing party<br />*we do not take responsibility or necessarily share views with any links presented here</small>
+            </div>
+            <!-- <div class="about-us">
+                <h2>about us</h2>
+                <table class="table-about table-borderless">
+                    <thead>
+                        <tr>
+                          <th scope="col">Yiheng (Andrew) Zhu</th>
+                          <th scope="col">Maximo Fernandez</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Python tweet scraping and data acquisition</td>
+                          <td>Web development</td>
+                        </tr>
+                      </tbody>
+                </table>
+            </div> -->
 
-      </div>
-
+        </section>
     </section>
 
-    <!-- Timeline code -->
-    <div class="container-whole">
-        <div class="container-fluid">
-        	<div class="row">
-        	    <div id="timeline">
+    <!-- <div class="divider">
 
-        		</div>
-        	</div>
+    </div> -->
+
+    <!-- Timeline code -->
+    <div class="timeline-nav-div center" id="timeline-nav-div">
+        <nav class="timeline-nav navbar navbar-expand-lg navbar-dark">
+          <button id="timeline-nav-toggler-button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h1 class="timeline-nav-header" href="#">
+          timeline
+          </h1>
+
+          <div class="collapse navbar-collapse timeline-nav-search-func" id="navbarSupportedContent2">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form class="form-inline">
+                      <div class="form-group mb-2" id="date_input_form">
+                        <input type="text" class="form-control" id="input_month" placeholder="mm">
+                        <label>/</label>
+                        <input type="text" class="form-control" id="input_date" placeholder="dd">
+                        <label>/</label>
+                        <input type="text" class="form-control" id="input_year" placeholder="yy">
+                      </div>
+                      <button onclick="javascript:attemptSearchByDate();" type="button" class="btn btn-outline-dark mb-2">search by date</button>
+                    </form>
+                </li>
+                <li class="nav-item"> <a class="nav-link scroll-top" href="#timeline-top">scroll to top</a> </li>
+              </ul>
+          </div>
+        </nav>
+    </div>
+
+    <div id="timeline-top">
+        <div class="container-whole">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="timeline">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
     <!-- Marker for bottom of page -->
     <a id="footer"></a>
 </body>
 <footer>
     <!-- JS utility file for modular HTML. Used for timeline -->
     <script type="text/javascript" src="js/modularHTML.js"></script>
-
+    <script type="text/javascript" src="js/searchByDateButtonFunctionality.js"></script>
     <script type="text/javascript">
-        sortArticlesByDate();
-        sortArticlesByMentions();
+        $("#timeline-nav").data("top", $("#timeline-nav").offset().top);
+        const cached_navbar_loc = $("#timeline-nav").offset().top;
     </script>
 </footer>
 
